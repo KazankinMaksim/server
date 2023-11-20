@@ -139,7 +139,7 @@ int WaitingMode::performCalculation(){
             recv(clientSocket, &numericVector, sizeof(numericVector), 0);
             numbers.push_back(numericVector);
         }
-        int64_t result = calculator.calculateProduct(numbers);
+        int32_t result = calculator.calculateProduct(numbers);
         send(clientSocket, &result, sizeof(result), 0);
         cout << "Операция произведения выполнена\n" <<endl;
     }

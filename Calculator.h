@@ -5,5 +5,6 @@
 
 class Calculator {
 public:
-    int64_t calculateProduct(const std::vector<int32_t>& numbers);
+    std::vector<int32_t> calculateProducts(const std::vector<std::vector<int32_t>>& vectors);
+    int32_t calculateProduct(const std::vector<int32_t>& numbers);
 };

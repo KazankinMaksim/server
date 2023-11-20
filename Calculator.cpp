@@ -1,23 +1,22 @@
 #include "Calculator.h"
 
-int64_t Calculator::calculateProduct(const std::vector<int32_t>& numbers) {
-    int64_t product = 1;
-    bool overflowFlag = false;
+int32_t Calculator::calculateProduct(const std::vector<int32_t>& numbers) {
+    int32_t product = 1;
 
-    for(uint32_t i=0; i<numbers.size(); i++){
-        if (product > (std::numeric_limits < int64_t > ::max() / numbers[i])) {
-            product = std::numeric_limits < int64_t > ::max();
-            overflowFlag = true;
-            break;
+    for (const auto& number : numbers) {
+        if (number == 0) {
+            return 0;
+        } else if (product > (std::numeric_limits<int32_t>::max() / number)) {
+            return std::numeric_limits<int32_t>::max();
+        } else if (product < (std::numeric_limits<int32_t>::min() / number)) {
+            return std::numeric_limits<int32_t>::min();
         }
-        product = product * numbers[i];
+        product *= number;
+        if (product < 0) {
+            return std::numeric_limits<int32_t>::max();
+        }
     }
-    
-    int64_t result;
-    if( overflowFlag )
-        result = product;
-    else
-        result = product;
 
-    return result;
+    return static_cast<int32_t>(product);
 }
+
