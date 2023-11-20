@@ -17,6 +17,6 @@ int32_t Calculator::calculateProduct(const std::vector<int32_t>& numbers) {
         }
     }
 
-    return static_cast<int32_t>(product);
+    return product;
 }
 
