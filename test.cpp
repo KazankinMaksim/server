@@ -64,14 +64,14 @@ SUITE(LogWriterTestSuite) {
     std::ifstream logFile(logFileName);
     std::string line;
     CHECK(std::getline(logFile, line));
-    // Проверяем, что временная метка соответствует ожидаемому формату
+    
     std::string timestamp = line.substr(0, 19);
-    CHECK_EQUAL(19, timestamp.size());  // Проверяем длину временной метки
-    CHECK_EQUAL('-', timestamp[4]);  // Проверяем разделители даты
-    CHECK_EQUAL('-', timestamp[7]);  // Проверяем разделители даты
-    CHECK_EQUAL(' ', timestamp[10]);  // Проверяем разделитель даты и времени
-    CHECK_EQUAL(':', timestamp[13]);  // Проверяем разделители времени
-    CHECK_EQUAL(':', timestamp[16]);  // Проверяем разделители времени
+    CHECK_EQUAL(19, timestamp.size());  
+    CHECK_EQUAL('-', timestamp[4]);  
+    CHECK_EQUAL('-', timestamp[7]);  
+    CHECK_EQUAL(' ', timestamp[10]);  
+    CHECK_EQUAL(':', timestamp[13]);  
+    CHECK_EQUAL(':', timestamp[16]); 
 
 }
 
