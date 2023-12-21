@@ -1,6 +1,7 @@
 #include "mdfile.h"
 #include "ErrorHandling.h"
 #include "Communicator.h"
+#include "LogWriter.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -60,9 +61,10 @@ int main(int argc, char *argv[]) {
         return 1;
     }
         
-    ErrorHandling errorHandler(errorLogFileName);
+    LogWriter logWriter(errorLogFileName);
+	ErrorHandling errorHandler;
         
-    WaitingMode communicator(serverPort, 10, errorHandler, databaseFileName);
+	WaitingMode communicator(serverPort, 10, errorHandler, logWriter, databaseFileName);
         
     communicator.runServer();
         

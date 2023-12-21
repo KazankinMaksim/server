@@ -3,8 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <cctype>
 #include <getopt.h>
 #include <cstdlib>
+#include <cstring>
 #include <unistd.h>
 #include <sstream>
 #include <string>
