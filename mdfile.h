@@ -1,3 +1,11 @@
+/** @file
+ * @author Казанкин Максим
+ * @version 1.0
+ * @date 22.12.23
+ * @copyright ИБСТ ПГУ
+ * @warning Курсовая работа
+ * @brief Заголовочный файл для модуля mdfile.h
+ */
 #pragma once
 #include <locale>
 #include <iostream>
@@ -16,6 +24,5 @@
 #include <cryptopp/hex.h>
 #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
 #include <cryptopp/md5.h>
-
 using namespace std;
 using namespace CryptoPP;

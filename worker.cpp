@@ -33,7 +33,7 @@ WaitingMode::WaitingMode(int serverPort, int queueLength, ErrorHandling& errorHa
     } catch(const std::exception& e) {
 		if( strcmp(e.what(), "Ошибка сокета!") == 0 ) {
     		errorHandler.watchMinor();
-            logWriter.writeLog("Minor: Ошибка сокета!");
+            logWriter.writeLog("Error: Ошибка сокета!");
 		} else if( strcmp(e.what(), "Установка повторного подключения не удалась") == 0 ) {
     		errorHandler.watchInfo();
             logWriter.writeLog("Info: Установка повторного подключения не удалась");
@@ -77,7 +77,7 @@ void WaitingMode::runServer(){
         logWriter.writeLog("Critical: Ошибка сокета!");
 	} else if( strcmp(e.what(), "Ошибка подключения клиента!") == 0 ) {
    		 errorHandler.watchMinor();
-         logWriter.writeLog("Minor: Ошибка подключения клиента!");
+         logWriter.writeLog("Error: Ошибка подключения клиента!");
 	}
 	}
     exit(1);
@@ -116,26 +116,22 @@ int WaitingMode::authorizeClient(){
             digest = calculateMD5(saltedHash);
 
             if (digest != clientHash){
-                cout << digest << endl;
-                cout << clientHash << endl;
                 sendMessage(errorMessage);
                 throw std::runtime_error("Ошибка пароля");
             } else{
-                sendMessage(successMessage);
-            }
+    			sendMessage(successMessage);
+}
         }
     } catch(const std::exception& e) {
-        if( strcmp(e.what(), "Ошибка логина") == 0 ) {
-    		errorHandler.watchMinor();
-            logWriter.writeLog("Minor: Ошибка логина");
-		} else if( strcmp(e.what(), "Ошибка пароля") == 0 ) {
-   			errorHandler.watchMinor();
-            logWriter.writeLog("Minor: Ошибка пароля");
-		}
-        close(clientSocket);
-        return 1;
+    if( strcmp(e.what(), "Ошибка логина") == 0 ) {
+        errorHandler.watchCritical();
+        logWriter.writeLog("Critical: Ошибка логина");
+    } else if( strcmp(e.what(), "Ошибка пароля") == 0 ) {
+        errorHandler.watchCritical();
+        logWriter.writeLog("Critical: Ошибка пароля");
     }
-    return 1;
+}
+return 1;
 }
 
 void WaitingMode::sendMessage(string message){
@@ -150,7 +146,7 @@ string WaitingMode::calculateMD5(string saltedHash){
     StringSource(saltedHash, true,  new HashFilter(hash, new HexEncoder(new StringSink(digest))));
     return digest;
 }
-     
+    
 int WaitingMode::performCalculation(){
     Calculator calculator;
     uint32_t quantity;
@@ -167,18 +163,17 @@ int WaitingMode::performCalculation(){
         }
         int32_t result = calculator.calculateProduct(numbers);
         send(clientSocket, &result, sizeof(result), 0);
-        errorHandler.watchInfo();
-        logWriter.writeLog("Info: Операция произведения выполнена");
-        cout << "Операция произведения выполнена\n" <<endl;
+     
     }
-                    
+    errorHandler.watchInfo();
+    logWriter.writeLog("Info: Операция произведения выполнена");
+    cout << "Операция произведения выполнена" <<endl;               
     errorHandler.watchInfo();
     logWriter.writeLog("Info: Операция сервера завершена");
-    cout << "Операция сервера завершена\n" <<endl;
+    cout << "Операция сервера завершена" <<endl;
     errorHandler.watchInfo();
     logWriter.writeLog("Info: Клиент отключен");
     cout << "Клиент отключен" << endl;
     close(clientSocket);
     return 1;
 }
-

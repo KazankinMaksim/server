@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Сетевой сервер: Исходный файл Communicator.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Сетевой сервер
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Communicator.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Communicator_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ErrorHandling_8h.html">ErrorHandling.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Calculator_8h.html">Calculator.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="LogWriter_8h.html">LogWriter.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classWaitingMode.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classWaitingMode.html">WaitingMode</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> serverSocket;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> queueLength;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::unique_ptr&lt; sockaddr_in &gt; serverAddress;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::unique_ptr&lt; sockaddr_in &gt; clientAddress;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classErrorHandling.html">ErrorHandling</a>&amp; errorHandler;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classLogWriter.html">LogWriter</a>&amp; logWriter;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::string clientFile;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> clientSocket;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> authorizeClient();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> performCalculation();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::string calculateMD5(std::string input);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> sendMessage(std::string message);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classWaitingMode.html#a2e16c950f8db3c5730827b048cd6ff16">   59</a></span>&#160;    <a class="code" href="classWaitingMode.html#a2e16c950f8db3c5730827b048cd6ff16">WaitingMode</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classWaitingMode.html#a88c3da2baa29b476666ebadda42a9dca">   68</a></span>&#160;    <a class="code" href="classWaitingMode.html#a88c3da2baa29b476666ebadda42a9dca">WaitingMode</a>(<span class="keywordtype">int</span> port, <span class="keywordtype">int</span> queueLength, <a class="code" href="classErrorHandling.html">ErrorHandling</a>&amp; errorHandling, <a class="code" href="classLogWriter.html">LogWriter</a>&amp; logWriter, std::string clients);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classWaitingMode.html#a383e708fe639921e3e2a320b0ad3857a">runServer</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
+<div class="ttc" id="aCalculator_8h_html"><div class="ttname"><a href="Calculator_8h.html">Calculator.h</a></div><div class="ttdoc">Заголовочный файл для модуля Calculator.</div></div>
+<div class="ttc" id="aErrorHandling_8h_html"><div class="ttname"><a href="ErrorHandling_8h.html">ErrorHandling.h</a></div><div class="ttdoc">Заголовочный файл для модуля ErrorHandling.</div></div>
+<div class="ttc" id="aLogWriter_8h_html"><div class="ttname"><a href="LogWriter_8h.html">LogWriter.h</a></div><div class="ttdoc">Заголовочный файл для модуля LogWriter.</div></div>
+<div class="ttc" id="aclassErrorHandling_html"><div class="ttname"><a href="classErrorHandling.html">ErrorHandling</a></div><div class="ttdoc">Класс для обработки ошибок</div><div class="ttdef"><b>Definition:</b> ErrorHandling.h:14</div></div>
+<div class="ttc" id="aclassLogWriter_html"><div class="ttname"><a href="classLogWriter.html">LogWriter</a></div><div class="ttdoc">Класс для записи логов</div><div class="ttdef"><b>Definition:</b> LogWriter.h:14</div></div>
+<div class="ttc" id="aclassWaitingMode_html"><div class="ttname"><a href="classWaitingMode.html">WaitingMode</a></div><div class="ttdoc">Класс для работы сервера в режиме ожидания</div><div class="ttdef"><b>Definition:</b> Communicator.h:18</div></div>
+<div class="ttc" id="aclassWaitingMode_html_a2e16c950f8db3c5730827b048cd6ff16"><div class="ttname"><a href="classWaitingMode.html#a2e16c950f8db3c5730827b048cd6ff16">WaitingMode::WaitingMode</a></div><div class="ttdeci">WaitingMode()=delete</div><div class="ttdoc">Запретим конструктор без параметров</div></div>
+<div class="ttc" id="aclassWaitingMode_html_a383e708fe639921e3e2a320b0ad3857a"><div class="ttname"><a href="classWaitingMode.html#a383e708fe639921e3e2a320b0ad3857a">WaitingMode::runServer</a></div><div class="ttdeci">void runServer()</div><div class="ttdoc">Запуск сервера</div><div class="ttdef"><b>Definition:</b> worker.cpp:45</div></div>
+<div class="ttc" id="aclassWaitingMode_html_a88c3da2baa29b476666ebadda42a9dca"><div class="ttname"><a href="classWaitingMode.html#a88c3da2baa29b476666ebadda42a9dca">WaitingMode::WaitingMode</a></div><div class="ttdeci">WaitingMode(int port, int queueLength, ErrorHandling &amp;errorHandling, LogWriter &amp;logWriter, std::string clients)</div><div class="ttdoc">Конструктор класса</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

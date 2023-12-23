@@ -1,0 +1,71 @@
+\hypertarget{classCalculator}{}\doxysubsection{Класс Calculator}
+\label{classCalculator}\index{Calculator@{Calculator}}
+
+
+Класс для вычисления произведений  
+
+
+
+
+{\ttfamily \#include $<$Calculator.\+h$>$}
+
+\doxysubsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int32\+\_\+t $>$ \mbox{\hyperlink{classCalculator_a54a20d6f890e3a410d51571184e8f2e4}{calculate\+Products}} (const std\+::vector$<$ std\+::vector$<$ int32\+\_\+t $>$$>$ \&vectors)
+\begin{DoxyCompactList}\small\item\em Вычисление произведений для каждого вектора \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classCalculator_a733d916bfa7a280c59513ea7b1c90191}{calculate\+Product}} (const std\+::vector$<$ int32\+\_\+t $>$ \&numbers)
+\begin{DoxyCompactList}\small\item\em Вычисление произведения чисел в векторе \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Подробное описание}
+Класс для вычисления произведений 
+
+Класс содержит два метода для вычисления произведений чисел. \begin{DoxyWarning}{Предупреждения}
+Реализация только для типа данных int32\+\_\+t 
+\end{DoxyWarning}
+
+
+\doxysubsubsection{Методы}
+\mbox{\Hypertarget{classCalculator_a733d916bfa7a280c59513ea7b1c90191}\label{classCalculator_a733d916bfa7a280c59513ea7b1c90191}} 
+\index{Calculator@{Calculator}!calculateProduct@{calculateProduct}}
+\index{calculateProduct@{calculateProduct}!Calculator@{Calculator}}
+\doxyparagraph{\texorpdfstring{calculateProduct()}{calculateProduct()}}
+{\footnotesize\ttfamily int32\+\_\+t Calculator\+::calculate\+Product (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int32\+\_\+t $>$ \&}]{numbers }\end{DoxyParamCaption})}
+
+
+
+Вычисление произведения чисел в векторе 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em numbers} & Вектор чисел, для которых нужно вычислить произведение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Произведение чисел 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCalculator_a54a20d6f890e3a410d51571184e8f2e4}\label{classCalculator_a54a20d6f890e3a410d51571184e8f2e4}} 
+\index{Calculator@{Calculator}!calculateProducts@{calculateProducts}}
+\index{calculateProducts@{calculateProducts}!Calculator@{Calculator}}
+\doxyparagraph{\texorpdfstring{calculateProducts()}{calculateProducts()}}
+{\footnotesize\ttfamily std\+::vector$<$int32\+\_\+t$>$ Calculator\+::calculate\+Products (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int32\+\_\+t $>$$>$ \&}]{vectors }\end{DoxyParamCaption})}
+
+
+
+Вычисление произведений для каждого вектора 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em vectors} & Вектор векторов, для которых нужно вычислить произведения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор произведений 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Calculator_8h}{Calculator.\+h}}\item 
+Calculator.\+cpp\end{DoxyCompactItemize}

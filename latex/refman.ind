@@ -1,0 +1,37 @@
+\begin{theindex}
+
+  \item {calculateProduct}
+    \subitem {Calculator}, \hyperpage{3}
+  \item {calculateProducts}
+    \subitem {Calculator}, \hyperpage{3}
+  \item {Calculator}, \hyperpage{2}
+    \subitem {calculateProduct}, \hyperpage{3}
+    \subitem {calculateProducts}, \hyperpage{3}
+  \item {Calculator.h}, \hyperpage{7}
+  \item {Communicator.h}, \hyperpage{8}
+
+  \indexspace
+
+  \item {ErrorHandling}, \hyperpage{4}
+  \item {ErrorHandling.h}, \hyperpage{9}
+
+  \indexspace
+
+  \item {LogWriter}, \hyperpage{4}
+    \subitem {LogWriter}, \hyperpage{4}
+    \subitem {writeLog}, \hyperpage{5}
+  \item {LogWriter.h}, \hyperpage{10}
+
+  \indexspace
+
+  \item {mdfile.h}, \hyperpage{11}
+
+  \indexspace
+
+  \item {WaitingMode}, \hyperpage{5}
+    \subitem {WaitingMode}, \hyperpage{6}
+  \item {WaitingMode.h}, \hyperpage{13}
+  \item {writeLog}
+    \subitem {LogWriter}, \hyperpage{5}
+
+\end{theindex}
