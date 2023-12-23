@@ -1,6 +1,6 @@
 #include "mdfile.h"
 #include "ErrorHandling.h"
-#include "Communicator.h"
+#include "WaitingMode.h"
 #include "LogWriter.h"
 using namespace std;
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
             cout << "-f или --file — параметр ввода имени файла с базы данных пользователей" << endl;
             cout << "-p или --port — параметр ввода порта" << endl;
             cout << "-e или --error — параметр ввода имени файла-журнала ошибок" << endl;
-            cout << "\nДля запуска сервера необходимо ввести следующее:\n./main -f/--file *файл базы данных* (base.txt) -p/--port *порт* (33333) -e/--error *журнал ошибок* (error.txt)" << endl;
+            cout << "\nДля запуска сервера необходимо ввести следующее:\n./server -f/--file *файл базы данных* (base.txt) -p/--port *порт* (33333) -e/--error *журнал ошибок* (error.txt)" << endl;
             return 1;
             break;
             case 'f':
@@ -47,26 +47,41 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
+LogWriter logWriter(errorLogFileName);
+ErrorHandling errorHandler;
 
-    if (!fileFlag || !portFlag || !errorFlag) {
-        cout << "Ошибка: Неверно введены аргументы, -h/--help для просмотра справки" << endl;
-        return 1;
-    }
+std::vector<std::string> missingParams;
 
-    fstream file;
-    file.exceptions(ifstream::badbit | ifstream::failbit);
-    try{
-        file.open(databaseFileName);
-    } catch(const exception & ex){
-        return 1;
-    }
-        
-    LogWriter logWriter(errorLogFileName);
-	ErrorHandling errorHandler;
-        
-	WaitingMode communicator(serverPort, 10, errorHandler, logWriter, databaseFileName);
-        
-    communicator.runServer();
-        
-    return 0;
+if (!fileFlag) {
+    missingParams.push_back("-f/--file");
 }
+if (!portFlag) {
+    missingParams.push_back("-p/--port");
+}
+if (!errorFlag) {
+    missingParams.push_back("-e/--error");
+}
+
+if (!missingParams.empty()) {
+    errorHandler.watchMinor();
+    for (const auto& param : missingParams) {
+        try {
+            throw std::runtime_error("Пропущен параметр " + param);
+        } catch (const std::exception& e) {
+            cout << "Пропущен параметр " << param << endl;
+            logWriter.writeLog("Error: Пропущен параметр " + param);
+        }
+    }
+    cout << "Введите -h/--help для просмотра справки" << endl;
+    return 1;
+}
+
+
+
+WaitingMode communicator(serverPort, 10, errorHandler, logWriter, databaseFileName);
+
+communicator.runServer();
+
+return 0;
+}
+

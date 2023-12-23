@@ -2,7 +2,7 @@
 CC = g++
 
 # Флаги компиляции
-CFLAGS = -Wall -Wextra -std=c++17
+CFLAGS = -Wall -Wextra -std=c++14
 
 # Имя исполняемого файла
 EXEC_SERVER = server
