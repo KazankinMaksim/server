@@ -19,6 +19,15 @@ int main(int argc, char *argv[]) {
         {"error", required_argument, 0, 'e'},
         {0, 0, 0, 0}
     };
+     if (argc == 1) {
+        cout << "\n Меню команд  "<< endl;
+        cout << "\nВы просматриваете инструкции по запуску сервера. Ниже приведены основные параметры и их назначение:\n"  << endl;
+        cout << "-f или --file — параметр ввода имени файла с базы данных пользователей" << endl;
+        cout << "-p или --port — параметр ввода порта" << endl;
+        cout << "-e или --error — параметр ввода имени файла-журнала ошибок" << endl;
+        cout << "\nДля запуска сервера необходимо ввести следующее:\n./server -f/--file *файл базы данных* (base.txt) -p/--port *порт* (33333) -e/--error *журнал ошибок* (error.txt)" << endl;
+        return 1;
+    }
 
     int option_index = 0;
     bool fileFlag = false, portFlag = false, errorFlag = false;
